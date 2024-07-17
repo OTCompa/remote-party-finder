@@ -13,11 +13,14 @@ using Newtonsoft.Json;
 namespace RemotePartyFinder;
 
 internal class Gatherer : IDisposable {
-    #if DEBUG
-    private const string UploadUrl = "http://127.0.0.1:8000/contribute/multiple";
-    #elif RELEASE
-    private const string UploadUrl = "https://xivpf.com/contribute/multiple";
-    #endif
+#if DEBUG
+    private List<string> UploadURLs = new List<string> { "http://127.0.0.1:8000/contribute/multiple" };
+#elif RELEASE
+    private List<string> UploadURLs = new List<string> {
+        "https://xivpf.com/contribute/multiple",
+        "https://findingway.io/receive"
+    };
+#endif
 
     private Plugin Plugin { get; }
 
@@ -61,11 +64,15 @@ internal class Gatherer : IDisposable {
                     .Select(listing => new UploadableListing(listing))
                     .ToList();
                 var json = JsonConvert.SerializeObject(uploadable);
-                var resp = await this.Client.PostAsync(UploadUrl, new StringContent(json) {
-                    Headers = { ContentType = MediaTypeHeaderValue.Parse("application/json") },
-                });
-                var output = await resp.Content.ReadAsStringAsync();
-                Plugin.Log.Info(output);
+                foreach (var UploadUrl in UploadURLs)
+                {
+                    var resp = await this.Client.PostAsync(UploadUrl, new StringContent(json)
+                    {
+                        Headers = { ContentType = MediaTypeHeaderValue.Parse("application/json") },
+                    });
+                    var output = await resp.Content.ReadAsStringAsync();
+                    Plugin.Log.Info(output);
+                }
             });
         }
     }
