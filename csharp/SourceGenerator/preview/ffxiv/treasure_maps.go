@@ -1,0 +1,148 @@
+package ffxiv
+
+var TREASURE_MAPS = map[uint32]LocalisedText{
+	0: {
+		En: "All Levels",
+		Ja: "レベルを指定しない",
+		De: "Jede Stufe",
+		Fr: "Tous niveaux",
+	},
+	1: {
+          En: "Leather Treasure Map",
+          Ja: "古ぼけた地図G1",
+          De: "Leder-Schatzkarte",
+          Fr: "Carte au trésor en cuir",
+        },
+	2: {
+          En: "Leather Treasure Map",
+          Ja: "古ぼけた地図G1",
+          De: "Leder-Schatzkarte",
+          Fr: "Carte au trésor en cuir",
+        },
+	3: {
+          En: "Goatskin Treasure Map",
+          Ja: "古ぼけた地図G2",
+          De: "Steinbockleder-Schatzkarte",
+          Fr: "Carte au trésor en peau de bouquetin",
+        },
+	4: {
+          En: "Toadskin Treasure Map",
+          Ja: "古ぼけた地図G3",
+          De: "Krötenleder-Schatzkarte",
+          Fr: "Carte au trésor en peau de crapaud",
+        },
+	5: {
+          En: "Boarskin Treasure Map",
+          Ja: "古ぼけた地図G4",
+          De: "Keilerleder-Schatzkarte",
+          Fr: "Carte au trésor en peau de sanglier",
+        },
+	6: {
+          En: "Peisteskin Treasure Map",
+          Ja: "古ぼけた地図G5",
+          De: "Basiliskenleder-Schatzkarte",
+          Fr: "Carte au trésor en peau de peiste",
+        },
+	7: {
+          En: "Leather Buried Treasure Map",
+          Ja: "隠された地図G1",
+          De: "Kryptische Karte",
+          Fr: "Carte au trésor secrète en cuir",
+        },
+	8: {
+          En: "Archaeoskin Treasure Map",
+          Ja: "古ぼけた地図G6",
+          De: "Archaeoleder-Schatzkarte",
+          Fr: "Carte au trésor en peau d'archéornis",
+        },
+	9: {
+          En: "Wyvernskin Treasure Map",
+          Ja: "古ぼけた地図G7",
+          De: "Wyvernleder-Schatzkarte",
+          Fr: "Carte au trésor en peau de wyverne",
+        },
+	10: {
+          En: "Dragonskin Treasure Map",
+          Ja: "古ぼけた地図G8",
+          De: "Drachenleder-Schatzkarte",
+          Fr: "Carte au trésor en peau de dragon",
+        },
+	11: {
+          En: "Gaganaskin Treasure Map",
+          Ja: "古ぼけた地図G9",
+          De: "Gaganaleder-Schatzkarte",
+          Fr: "Carte au trésor en peau de gagana",
+        },
+	12: {
+          En: "Gazelleskin Treasure Map",
+          Ja: "古ぼけた地図G10",
+          De: "Gazellenleder-Schatzkarte",
+          Fr: "Carte au trésor en peau de gazelle",
+        },
+	13: {
+          En: "Seemingly Special Treasure Map",
+          Ja: "古ぼけた地図S1",
+          De: "Exotenleder-Schatzkarte",
+          Fr: "Carte au trésor inhabituelle I",
+        },
+	14: {
+          En: "Gliderskin Treasure Map",
+          Ja: "古ぼけた地図G11",
+          De: "Smilodonleder-Schatzkarte",
+          Fr: "Carte au trésor en peau de smilodon",
+        },
+	15: {
+          En: "Zonureskin Treasure Map",
+          Ja: "古ぼけた地図G12",
+          De: "Glaucusleder-Schatzkarte",
+          Fr: "Carte au trésor en peau de glaucus",
+        },
+	16: {
+          En: "Ostensibly Special Treasure Map",
+          Ja: "古ぼけた地図S2",
+          De: "Mythenleder-Schatzkarte",
+          Fr: "Carte au trésor inhabituelle II",
+        },
+	17: {
+          En: "Saigaskin Treasure Map",
+          Ja: "古ぼけた地図G13",
+          De: "Gajaleder-Schatzkarte",
+          Fr: "Carte au trésor en peau de gaja",
+        },
+	18: {
+          En: "Kumbhiraskin Treasure Map",
+          Ja: "古ぼけた地図G14",
+          De: "Kumbhilaleder-Schatzkarte",
+          Fr: "Carte au trésor en peau de kumbhira",
+        },
+	19: {
+          En: "Ophiotauroskin Treasure Map",
+          Ja: "古ぼけた地図G15",
+          De: "Ophiotaurosleder-Schatzkarte",
+          Fr: "Carte au trésor en peau d'ophiotauros",
+        },
+	20: {
+          En: "Potentially Special Treasure Map",
+          Ja: "古ぼけた地図S3",
+          De: "Legendenleder-Schatzkarte",
+          Fr: "Carte au trésor inhabituelle III",
+        },
+	21: {
+          En: "Conceivably Special Treasure Map",
+          Ja: "古ぼけた地図S4",
+          De: "Sagenleder-Schatzkarte",
+          Fr: "Carte au trésor inhabituelle IV",
+        },
+	22: {
+          En: "Loboskin Treasure Map",
+          Ja: "古ぼけた地図G16",
+          De: "Schakalleder-Schatzkarte",
+          Fr: "Carte au trésor en peau de loup argenté",
+        },
+	23: {
+          En: "Br'aaxskin Treasure Map",
+          Ja: "古ぼけた地図G17",
+          De: "Br'aaxleder-Schatzkarte",
+          Fr: "Carte au trésor en peau de br'aax",
+        },
+}
