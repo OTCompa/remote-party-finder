@@ -14,7 +14,7 @@ namespace RemotePartyFinder;
 
 internal class Gatherer : IDisposable {
 #if DEBUG
-    private List<string> UploadURLs = new List<string> { "http://127.0.0.1:8000/contribute/multiple" };
+    private List<string> UploadURLs = new List<string> { "http://127.0.0.1:5000" };
 #elif RELEASE
     private List<string> UploadURLs = new List<string> {
         "https://xivpf.com/contribute/multiple",

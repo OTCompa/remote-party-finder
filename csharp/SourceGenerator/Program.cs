@@ -2,12 +2,14 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using Lumina;
 using Lumina.Data;
 using Lumina.Excel;
 using Lumina.Excel.Sheets;
 using Lumina.Text;
+using Lumina.Text.Parse;
 using Lumina.Text.ReadOnly;
 using Pidgin;
 
@@ -35,13 +37,14 @@ internal class Program
 
         var prog = new Program(data);
         var outPath = args[1];
-        File.WriteAllText(Path.Join(outPath, "duties.rs"), prog.GenerateDuties());
-        File.WriteAllText(Path.Join(outPath, "jobs.rs"), prog.GenerateJobs());
-        File.WriteAllText(Path.Join(outPath, "roulettes.rs"), prog.GenerateRoulettes());
-        File.WriteAllText(Path.Join(outPath, "worlds.rs"), prog.GenerateWorlds());
-        File.WriteAllText(Path.Join(outPath, "territory_names.rs"), prog.GenerateTerritoryNames());
-        File.WriteAllText(Path.Join(outPath, "auto_translate.rs"), prog.GenerateAutoTranslate());
-        File.WriteAllText(Path.Join(outPath, "treasure_maps.rs"), prog.GenerateTreasureMaps());
+        File.WriteAllText(Path.Join(outPath, "auto_translate.go"), prog.GenerateAutoTranslate());
+        File.WriteAllText(Path.Join(outPath, "content_kinds.go"), prog.GenerateContentKinds());
+        File.WriteAllText(Path.Join(outPath, "duties.go"), prog.GenerateDuties());
+        File.WriteAllText(Path.Join(outPath, "jobs.go"), prog.GenerateJobs());
+        File.WriteAllText(Path.Join(outPath, "roulettes.go"), prog.GenerateRoulettes());
+        File.WriteAllText(Path.Join(outPath, "territory_names.go"), prog.GenerateTerritoryNames());
+        File.WriteAllText(Path.Join(outPath, "treasure_maps.go"), prog.GenerateTreasureMaps());
+        File.WriteAllText(Path.Join(outPath, "worlds.go"), prog.GenerateWorlds());
     }
 
     private Dictionary<Language, GameData> Data { get; }
@@ -53,26 +56,28 @@ internal class Program
 
     private static StringBuilder DefaultHeader(bool localisedText = false)
     {
-        var sb = new StringBuilder("use std::collections::HashMap;\n");
+        var sb = new StringBuilder("package ffxiv\n");
 
+        /*
         if (localisedText)
         {
             sb.Append("use super::LocalisedText;\n");
         }
+        */
 
         return sb;
     }
 
     private static readonly Dictionary<Language, string> Languages = new()
     {
-        [Language.English] = "en",
-        [Language.Japanese] = "ja",
-        [Language.German] = "de",
-        [Language.French] = "fr",
+        [Language.English] = "En",
+        [Language.Japanese] = "Ja",
+        [Language.German] = "De",
+        [Language.French] = "Fr",
     };
 
     private string? GetLocalisedStruct<T>(uint rowId, Func<T, ReadOnlySeString?> nameFunc, uint indent = 0,
-        bool capitalise = false) where T : struct, IExcelRow<T>
+        bool capitalise = false, bool type = true) where T : struct, IExcelRow<T>
     {
         var def = this.Data[Language.English].GetExcelSheet<T>()!.GetRow(rowId)!;
         var defName = nameFunc(def)?.ExtractText();
@@ -82,8 +87,14 @@ internal class Program
         }
 
         var sb = new StringBuilder();
-
-        sb.Append("LocalisedText {\n");
+        if (type)
+        {
+            sb.Append("LocalisedText{\n");
+        }
+        else
+        {
+            sb.Append("{\n");
+        }
 
         foreach (var (language, key) in Languages)
         {
@@ -97,7 +108,7 @@ internal class Program
                 name = name[..1].ToUpperInvariant() + name[1..];
             }
 
-            for (var i = 0; i < indent + 4; i++)
+            for (var i = 0; i < indent + 2; i++)
             {
                 sb.Append(' ');
             }
@@ -120,13 +131,13 @@ internal class Program
         var sb = DefaultHeader(true);
         sb.Append('\n');
 
-        sb.Append("#[derive(Debug)]\n");
-        sb.Append("pub struct DutyInfo {\n");
-        sb.Append("    pub name: LocalisedText,\n");
-        sb.Append("    pub high_end: bool,\n");
-        sb.Append("    pub content_kind: ContentKind,\n");
+        sb.Append("type DutyInfo struct {\n");
+        sb.Append("\tName        LocalisedText\n");
+        sb.Append("\tHighEnd     bool\n");
+        sb.Append("\tContentKind ContentKind\n");
         sb.Append("}\n\n");
 
+        /*
         sb.Append("#[derive(Debug, Clone, Copy)]\n");
         sb.Append("#[allow(unused)]\n");
         sb.Append("#[repr(u32)]\n");
@@ -178,7 +189,8 @@ internal class Program
         sb.Append("}\n\n");
 
         sb.Append("lazy_static::lazy_static! {\n");
-        sb.Append("    pub static ref DUTIES: HashMap<u32, DutyInfo> = maplit::hashmap! {\n");
+        */
+        sb.Append("var DUTIES = map[uint32]DutyInfo{\n");
 
         foreach (var cfc in this.Data[Language.English].GetExcelSheet<ContentFinderCondition>()!)
         {
@@ -198,17 +210,16 @@ internal class Program
             var contentKind = contentType.Name.ExtractText().Replace(" ", "").Replace("&", "");
             if (string.IsNullOrEmpty(contentKind))
             {
-                contentKind = $"Other({contentType.RowId})";
+                contentKind = $"({contentType.RowId})";
             }
 
-            sb.Append($"        {cfc.RowId} => DutyInfo {{\n");
-            sb.Append($"            name: {name},\n");
-            sb.Append($"            high_end: {highEnd},\n");
-            sb.Append($"            content_kind: ContentKind::{contentKind},\n");
-            sb.Append("        },\n");
+            sb.Append($"\t{cfc.RowId}: {{\n");
+            sb.Append($"\t\tName: {name},\n");
+            sb.Append($"\t\tHighEnd: {highEnd},\n");
+            sb.Append($"\t\tContentKind: ContentKind{contentKind},\n");
+            sb.Append("\t},\n");
         }
 
-        sb.Append("    };\n");
         sb.Append("}\n");
 
         return sb.ToString();
@@ -217,10 +228,67 @@ internal class Program
     private string GenerateJobs()
     {
         var sb = DefaultHeader();
-        sb.Append("use ffxiv_types::jobs::{ClassJob, Class, Job, NonCombatJob};\n\n");
-        sb.Append("lazy_static::lazy_static! {\n");
-        sb.Append("    pub static ref JOBS: HashMap<u32, ClassJob> = maplit::hashmap! {\n");
+        sb.Append("type ClassJob interface {\n");
+        sb.Append("\tisClassJob()\n");
+        sb.Append("}\n\n");
 
+        sb.Append("type Class string\n\n");
+        sb.Append("func (Class) isClassJob() {}\n\n");
+
+        sb.Append("type Job string\n\n");
+        sb.Append("func (Job) isClassJob() {}\n\n");
+
+        sb.Append("type NonCombatJob string\n\n");
+        sb.Append("func (NonCombatJob) isClassJob() {}\n\n");
+
+        List<string> classes = [];
+        List<string> jobs = [];
+        List<string> nonCombatJobs = [];
+        foreach (var cj in this.Data[Language.English].GetExcelSheet<ClassJob>()!)
+        {
+            if (cj.RowId == 0)
+            {
+                continue;
+            }
+
+            var name = cj.NameEnglish.ExtractText().Replace(" ", "");
+            if (name.Length <= 0)
+            {
+                continue;
+            }
+
+            var isCombat = cj.Role != 0;
+            var isClass = cj.JobIndex == 0;
+            if (!isCombat)
+            {
+                nonCombatJobs.Add(name);
+                continue;
+            }
+
+            if (isClass)
+            {
+                classes.Add(name);
+                continue;
+            }
+
+            jobs.Add(name);
+        }
+
+        void constGenerator(List<string> classJob, string type)
+        {
+            sb.Append("const (\n");
+            foreach(var name in classJob)
+            {
+                sb.Append($"\t{name}\t{type} = \"{name}\"\n");
+            }
+            sb.Append(")\n\n");
+        }
+
+        constGenerator(classes, "Class");
+        constGenerator(jobs, "Job");
+        constGenerator(nonCombatJobs, "NonCombatJob");
+
+        sb.Append("var JOBS = map[uint32]ClassJob{\n");
         foreach (var cj in this.Data[Language.English].GetExcelSheet<ClassJob>()!)
         {
             if (cj.RowId == 0)
@@ -237,22 +305,9 @@ internal class Program
             var isCombat = cj.Role != 0;
             var isClass = cj.JobIndex == 0;
 
-            string value;
-            if (isCombat)
-            {
-                value = isClass
-                    ? $"ClassJob::Class(Class::{name})"
-                    : $"ClassJob::Job(Job::{name})";
-            }
-            else
-            {
-                value = $"ClassJob::NonCombat(NonCombatJob::{name})";
-            }
-
-            sb.Append($"        {cj.RowId} => {value},\n");
+            sb.Append($"\t{cj.RowId}: {name},\n");
         }
 
-        sb.Append("    };\n");
         sb.Append("}\n");
 
         return sb.ToString();
@@ -262,14 +317,12 @@ internal class Program
     {
         var sb = DefaultHeader(true);
         sb.Append('\n');
-        sb.Append("#[derive(Debug)]\n");
-        sb.Append("pub struct RouletteInfo {\n");
-        sb.Append("    pub name: LocalisedText,\n");
-        sb.Append("    pub pvp: bool,\n");
+        sb.Append("type RouletteInfo struct {\n");
+        sb.Append("\tName LocalisedText\n");
+        sb.Append("\tPVP  bool\n");
         sb.Append("}\n\n");
 
-        sb.Append("lazy_static::lazy_static! {\n");
-        sb.Append("    pub static ref ROULETTES: HashMap<u32, RouletteInfo> = maplit::hashmap! {\n");
+        sb.Append("var ROULETTES = map[uint32]RouletteInfo{\n");
 
         foreach (var cr in this.Data[Language.English].GetExcelSheet<ContentRoulette>()!)
         {
@@ -288,13 +341,11 @@ internal class Program
                 ? "true"
                 : "false";
 
-            sb.Append($"        {cr.RowId} => RouletteInfo {{\n");
-            sb.Append($"            name: {name},\n");
-            sb.Append($"            pvp: {pvp},\n");
-            sb.Append("        },\n");
+            sb.Append($"\t{cr.RowId}: {{\n");
+            sb.Append($"\t\tName: {name},\n");
+            sb.Append($"\t\tPVP: {pvp},\n");
+            sb.Append("\t},\n");
         }
-
-        sb.Append("    };\n");
         sb.Append("}\n");
 
         return sb.ToString();
@@ -303,10 +354,27 @@ internal class Program
     private string GenerateWorlds()
     {
         var sb = DefaultHeader();
-        sb.Append("use ffxiv_types::World;\n\n");
-        sb.Append("lazy_static::lazy_static! {\n");
-        sb.Append("    pub static ref WORLDS: HashMap<u32, World> = maplit::hashmap! {\n");
+        sb.Append("type World string\n\n");
 
+        // world constants
+        sb.Append("const (\n");
+        foreach (var world in this.Data[Language.English].GetExcelSheet<World>()!)
+        {
+            if (world.RowId == 0 || !world.IsPublic || world.UserType == 0 || world.DataCenter.RowId == 0)
+            {
+                continue;
+            }
+
+            var name = world.Name.ExtractText();
+            if (name.Length <= 0)
+            {
+                continue;
+            }
+            sb.Append($"\t{name}\tWorld = \"{name}\"\n");
+        }
+        sb.Append(")\n\n");
+
+        sb.Append("var WORLDS = map[uint32]World{\n");
         foreach (var world in this.Data[Language.English].GetExcelSheet<World>()!)
         {
             if (world.RowId == 0 || !world.IsPublic || world.UserType == 0 || world.DataCenter.RowId == 0)
@@ -320,10 +388,9 @@ internal class Program
                 continue;
             }
 
-            sb.Append($"        {world.RowId} => World::{name},\n");
+            sb.Append($"\t{world.RowId}: {name},\n");
         }
 
-        sb.Append("    };\n");
         sb.Append("}\n");
 
         return sb.ToString();
@@ -332,8 +399,7 @@ internal class Program
     private string GenerateTerritoryNames()
     {
         var sb = DefaultHeader(true);
-        sb.Append("\nlazy_static::lazy_static! {\n");
-        sb.Append("    pub static ref TERRITORY_NAMES: HashMap<u32, LocalisedText> = maplit::hashmap! {\n");
+        sb.Append("var TERRITORY_NAMES = map[uint32]LocalisedText{\n");
 
         foreach (var tt in this.Data[Language.English].GetExcelSheet<TerritoryType>()!)
         {
@@ -345,17 +411,18 @@ internal class Program
             var name = this.GetLocalisedStruct<TerritoryType>(
                 tt.RowId,
                 row => row.PlaceName.Value!.Name,
-                8
+                8,
+                false,
+                false
             );
             if (name == null)
             {
                 continue;
             }
 
-            sb.Append($"        {tt.RowId} => {name},\n");
+            sb.Append($"\t{tt.RowId}: {name},\n");
         }
 
-        sb.Append("    };\n");
         sb.Append("}\n");
 
         return sb.ToString();
@@ -364,8 +431,13 @@ internal class Program
     private string GenerateAutoTranslate()
     {
         var sb = DefaultHeader(true);
-        sb.Append("\nlazy_static::lazy_static! {\n");
-        sb.Append("    pub static ref AUTO_TRANSLATE: HashMap<(u32, u32), LocalisedText> = maplit::hashmap! {\n");
+
+        sb.Append("\ntype mapStruct struct {\n");
+        sb.Append("\tRowGroup, RowId uint32\n");
+        sb.Append("}\n\n");
+
+
+        sb.Append("var AUTO_TRANSLATE = map[mapStruct]LocalisedText{\n");
 
         var parser = AutoTranslate.Parser();
         foreach (var row in this.Data[Language.English].GetExcelSheet<Completion>()!)
@@ -442,7 +514,7 @@ internal class Program
                             continue;
 
                         builder.Clear();
-                        builder.Append($"        ({row.Group}, {i}) => LocalisedText {{\n");
+                        builder.Append($"\t{{{row.Group}, {i}}}: {{\n");
 
                         var lines = 0;
                         foreach (var lang in this.Data.Keys)
@@ -457,14 +529,15 @@ internal class Program
                                      where text.Length > 0
                                      select text)
                             {
-                                var replace = text.Replace(" ", "").Replace("­", "");;
+                                var replace = text.Replace(" ", "").Replace("­", "").Replace("\n", "");
+
                                 builder.Append($"            {Languages[lang]}: \"{replace}\",\n");
                                 lines += 1;
                                 break;
                             }
                         }
 
-                        builder.Append("        },\n");
+                        builder.Append("\t\t},\n");
 
                         if (lines != 4)
                         {
@@ -477,15 +550,14 @@ internal class Program
             }
             else
             {
-                var text = this.GetLocalisedStruct<Completion>(row.RowId, row => row.Text, 8);
+                var text = this.GetLocalisedStruct<Completion>(row.RowId, row => row.Text, 8, false, false);
                 if (text != null)
                 {
-                    sb.Append($"        ({row.Group}, {row.RowId}) => {text},\n");
+                    sb.Append($"\t{{{row.Group}, {row.RowId}}}: {text},\n");
                 }
             }
         }
 
-        sb.Append("    };\n");
         sb.Append("}\n");
 
         return sb.ToString();
@@ -494,14 +566,13 @@ internal class Program
     private string GenerateTreasureMaps()
     {
         var sb = DefaultHeader(true);
-        sb.Append("\nlazy_static::lazy_static! {\n");
-        sb.Append("    pub static ref TREASURE_MAPS: HashMap<u32, LocalisedText> = maplit::hashmap! {\n");
-        sb.Append("        0 => LocalisedText {\n");
-        sb.Append("            en: \"All Levels\",\n");
-        sb.Append("            ja: \"レベルを指定しない\",\n");
-        sb.Append("            de: \"Jede Stufe\",\n");
-        sb.Append("            fr: \"Tous niveaux\",\n");
-        sb.Append("        },\n");
+        sb.Append("\nvar TREASURE_MAPS = map[uint32]LocalisedText{\n");
+        sb.Append("\t0: {\n");
+        sb.Append("\t\tEn: \"All Levels\",\n");
+        sb.Append("\t\tJa: \"レベルを指定しない\",\n");
+        sb.Append("\t\tDe: \"Jede Stufe\",\n");
+        sb.Append("\t\tFr: \"Tous niveaux\",\n");
+        sb.Append("\t},\n");
 
         var i = 1;
         foreach (var row in this.Data[Language.English].GetExcelSheet<TreasureHuntRank>()!)
@@ -520,14 +591,80 @@ internal class Program
                     : name;
             }
 
-            var name = this.GetLocalisedStruct<TreasureHuntRank>(row.RowId, GetMapName, 8);
+            var name = this.GetLocalisedStruct<TreasureHuntRank>(row.RowId, GetMapName, 8, false, false);
             if (!string.IsNullOrEmpty(name))
             {
-                sb.Append($"        {i++} => {name},\n");
+                sb.Append($"\t{i++}: {name},\n");
             }
         }
 
-        sb.Append("    };\n");
+        sb.Append("}\n");
+
+        return sb.ToString();
+    }
+
+    private string GenerateContentKinds()
+    {
+        var sb = DefaultHeader(true);
+        sb.Append("type ContentKind uint32\n\n");
+
+        // consts
+        bool isFirst = true;
+        int ctr = 1;
+        sb.Append("const (\n");
+        foreach (var kind in this.Data[Language.English].GetExcelSheet<ContentType>()!)
+        {
+            var name = kind.Name.ExtractText().Replace(" ", "").Replace("&", "");
+            if (name.Length > 0)
+            {
+                while (ctr != kind.RowId && ctr < 100)
+                {
+                    sb.Append($"\t_ // {ctr}\n");
+                    ctr++;
+                }
+
+                sb.Append($"\tContentKind{name}");
+                if (isFirst)
+                {
+                    sb.Append(" ContentKind = 1 + iota\n");
+                    isFirst = false;
+                } else
+                {
+                    sb.Append("\n");
+                }
+                ctr++;
+            }
+        }
+
+        sb.Append("\tContentKindOther\n");
+        sb.Append(")\n\n");
+
+        sb.Append("func FromUint32(kind uint32) ContentKind {\n");
+        sb.Append($"\tif kind >= 1 && kind < {ctr} {{\n");
+        sb.Append("\t\treturn ContentKind(kind)\n");
+        sb.Append("\t}\n");
+        sb.Append("\treturn ContentKindOther\n");
+        sb.Append("}\n\n");
+
+
+        sb.Append("func (k ContentKind) AsUint32() uint32 {\n\treturn uint32(k)\n}\n\n");
+
+
+        sb.Append("func (k ContentKind) String() string {\n");
+        sb.Append("\tswitch k {\n");
+        foreach (var kind in this.Data[Language.English].GetExcelSheet<ContentType>()!)
+        {
+            var name = kind.Name.ExtractText().Replace(" ", "").Replace("&", "");
+            if (name.Length > 0)
+            {
+                sb.Append($"\tcase ContentKind{name}:\n");
+                sb.Append($"\t\treturn \"{name}\"\n");
+            }
+        }
+
+        sb.Append("\tdefault:\n");
+        sb.Append("\t\treturn \"Other\"\n");
+        sb.Append("\t}\n");
         sb.Append("}\n");
 
         return sb.ToString();
