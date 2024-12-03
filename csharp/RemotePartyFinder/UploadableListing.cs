@@ -58,6 +58,7 @@ internal class UploadableListing {
         this.SearchArea = listing.SearchArea;
         this.Slots = listing.Slots.Select(slot => new UploadableSlot(slot)).ToList();
         this.JobsPresent = listing.RawJobsPresent.ToList();
+        
     }
 }
 

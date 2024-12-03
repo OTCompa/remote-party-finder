@@ -432,12 +432,12 @@ internal class Program
     {
         var sb = DefaultHeader(true);
 
-        sb.Append("\ntype mapStruct struct {\n");
+        sb.Append("\ntype MapStruct struct {\n");
         sb.Append("\tRowGroup, RowId uint32\n");
         sb.Append("}\n\n");
 
 
-        sb.Append("var AUTO_TRANSLATE = map[mapStruct]LocalisedText{\n");
+        sb.Append("var AUTO_TRANSLATE = map[MapStruct]LocalisedText{\n");
 
         var parser = AutoTranslate.Parser();
         foreach (var row in this.Data[Language.English].GetExcelSheet<Completion>()!)
