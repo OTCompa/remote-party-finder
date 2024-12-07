@@ -354,10 +354,13 @@ internal class Program
     private string GenerateWorlds()
     {
         var sb = DefaultHeader();
-        sb.Append("type World string\n\n");
+        sb.Append("type World struct {\n");
+        sb.Append("\tName       string\n");
+        sb.Append("\tDatacenter string\n");
+        sb.Append("}\n\n");
 
         // world constants
-        sb.Append("const (\n");
+        sb.Append("var (\n");
         foreach (var world in this.Data[Language.English].GetExcelSheet<World>()!)
         {
             if (world.RowId == 0 || !world.IsPublic || world.UserType == 0 || world.DataCenter.RowId == 0)
@@ -370,7 +373,9 @@ internal class Program
             {
                 continue;
             }
-            sb.Append($"\t{name}\tWorld = \"{name}\"\n");
+
+            var dc = world.DataCenter.Value.Name.ExtractText();
+            sb.Append($"\t{name}\tWorld = World{{Name: \"{name}\", Datacenter: \"{dc}\"}}\n");
         }
         sb.Append(")\n\n");
 
