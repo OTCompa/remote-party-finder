@@ -1,10 +1,10 @@
 package ffxiv
 
-type mapStruct struct {
+type MapStruct struct {
 	RowGroup, RowId uint32
 }
 
-var AUTO_TRANSLATE = map[mapStruct]LocalisedText{
+var AUTO_TRANSLATE = map[MapStruct]LocalisedText{
 	{1, 100}: {
           En: "【Languages】",
           Ja: "【言葉】",

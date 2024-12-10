@@ -354,9 +354,62 @@ internal class Program
     private string GenerateWorlds()
     {
         var sb = DefaultHeader();
+        var datacenters = new Dictionary<string, List<string>>();
+        string[] regions = ["JP", "NA", "EU", "OC", "Others"];
+
+        // datacenters
+        sb.Append("type Datacenter int\n");
+        sb.Append("const (\n");
+
+        foreach (var region in regions)
+        {
+            datacenters[region] = [];
+        }
+
+        foreach (var dc in this.Data[Language.English].GetExcelSheet<WorldDCGroupType>()!)
+        {
+            if (dc.RowId == 0) { continue; }
+            var name = dc.Name.ExtractText();
+
+            // remove non JP/NA/EU/OCE dcs
+            if ((int)dc.Region < 1 || (int)dc.Region > 4)
+            { 
+                continue; 
+            }
+            sb.Append($"\t{name} Datacenter = {dc.NeolobbyId}\n");
+
+            // add datacenter regions
+            switch ((int)dc.Region) {
+                case 1:
+                    datacenters[regions[0]].Add(name); break;
+                case 2:
+                    datacenters[regions[1]].Add(name); break;
+                case 3:
+                    datacenters[regions[2]].Add(name); break;
+                case 4:
+                    datacenters[regions[3]].Add(name); break;
+                default:
+                    datacenters[regions[4]].Add(name); break;
+            }
+        }
+        sb.Append(")\n");
+
+        // add datacenter regions
+        foreach (var region in regions)
+        {
+            sb.Append($"func Datacenter{region}() []Datacenter {{\n");
+            sb.Append("\treturn []Datacenter{");
+            foreach (var world in datacenters[region])
+            {
+                sb.Append(world + ",");
+            }
+            sb.Append("}\n}\n\n");
+        }
+
+        // world struct
         sb.Append("type World struct {\n");
         sb.Append("\tName       string\n");
-        sb.Append("\tDatacenter string\n");
+        sb.Append("\tDatacenter Datacenter\n");
         sb.Append("}\n\n");
 
         // world constants
@@ -369,13 +422,19 @@ internal class Program
             }
 
             var name = world.Name.ExtractText();
-            if (name.Length <= 0)
+            if (name.Length <= 0) 
             {
                 continue;
             }
 
-            var dc = world.DataCenter.Value.Name.ExtractText();
-            sb.Append($"\t{name}\tWorld = World{{Name: \"{name}\", Datacenter: \"{dc}\"}}\n");
+            // remove cloud dcs
+            if (name.Contains("0"))
+            {
+                continue;
+            }
+
+            var dc = world.DataCenter.Value.Name.ExtractText().Replace(" ", "").Replace("(Beta)", "");
+            sb.Append($"\t{name}\tWorld = World{{Name: \"{name}\", Datacenter: {dc}}}\n");
         }
         sb.Append(")\n\n");
 
@@ -389,6 +448,12 @@ internal class Program
 
             var name = world.Name.ExtractText();
             if (name.Length <= 0)
+            {
+                continue;
+            }
+
+            // remove cloud dcs
+            if (name.Contains("0"))
             {
                 continue;
             }
