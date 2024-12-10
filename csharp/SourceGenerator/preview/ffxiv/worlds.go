@@ -1,20 +1,20 @@
 package ffxiv
 
-type Datacenter int
+type Datacenter string
 
 const (
-	Elemental Datacenter = 1
-	Gaia      Datacenter = 3
-	Mana      Datacenter = 5
-	Aether    Datacenter = 2
-	Primal    Datacenter = 4
-	Chaos     Datacenter = 6
-	Light     Datacenter = 7
-	Crystal   Datacenter = 8
-	Materia   Datacenter = 9
-	Meteor    Datacenter = 10
-	Dynamis   Datacenter = 11
-	Shadow    Datacenter = 12
+	Elemental Datacenter = "Elemental"
+	Gaia      Datacenter = "Gaia"
+	Mana      Datacenter = "Mana"
+	Aether    Datacenter = "Aether"
+	Primal    Datacenter = "Primal"
+	Chaos     Datacenter = "Chaos"
+	Light     Datacenter = "Light"
+	Crystal   Datacenter = "Crystal"
+	Materia   Datacenter = "Materia"
+	Meteor    Datacenter = "Meteor"
+	Dynamis   Datacenter = "Dynamis"
+	Shadow    Datacenter = "Shadow"
 )
 
 func DatacenterJP() []Datacenter {

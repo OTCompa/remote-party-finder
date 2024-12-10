@@ -358,7 +358,7 @@ internal class Program
         string[] regions = ["JP", "NA", "EU", "OC", "Others"];
 
         // datacenters
-        sb.Append("type Datacenter int\n");
+        sb.Append("type Datacenter string\n");
         sb.Append("const (\n");
 
         foreach (var region in regions)
@@ -376,7 +376,7 @@ internal class Program
             { 
                 continue; 
             }
-            sb.Append($"\t{name} Datacenter = {dc.NeolobbyId}\n");
+            sb.Append($"\t{name} Datacenter = \"{name}\"\n");
 
             // add datacenter regions
             switch ((int)dc.Region) {
