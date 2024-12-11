@@ -1,20 +1,23 @@
 package ffxiv
 
-type Datacenter string
+type Datacenter struct {
+	Name string
+	Id   int
+}
 
-const (
-	Elemental Datacenter = "Elemental"
-	Gaia      Datacenter = "Gaia"
-	Mana      Datacenter = "Mana"
-	Aether    Datacenter = "Aether"
-	Primal    Datacenter = "Primal"
-	Chaos     Datacenter = "Chaos"
-	Light     Datacenter = "Light"
-	Crystal   Datacenter = "Crystal"
-	Materia   Datacenter = "Materia"
-	Meteor    Datacenter = "Meteor"
-	Dynamis   Datacenter = "Dynamis"
-	Shadow    Datacenter = "Shadow"
+var (
+	Elemental Datacenter = Datacenter{Name: "Elemental", Id: 1}
+	Gaia      Datacenter = Datacenter{Name: "Gaia", Id: 3}
+	Mana      Datacenter = Datacenter{Name: "Mana", Id: 5}
+	Aether    Datacenter = Datacenter{Name: "Aether", Id: 2}
+	Primal    Datacenter = Datacenter{Name: "Primal", Id: 4}
+	Chaos     Datacenter = Datacenter{Name: "Chaos", Id: 6}
+	Light     Datacenter = Datacenter{Name: "Light", Id: 7}
+	Crystal   Datacenter = Datacenter{Name: "Crystal", Id: 8}
+	Materia   Datacenter = Datacenter{Name: "Materia", Id: 9}
+	Meteor    Datacenter = Datacenter{Name: "Meteor", Id: 10}
+	Dynamis   Datacenter = Datacenter{Name: "Dynamis", Id: 11}
+	Shadow    Datacenter = Datacenter{Name: "Shadow", Id: 12}
 )
 
 func DatacenterJP() []Datacenter {

@@ -358,8 +358,12 @@ internal class Program
         string[] regions = ["JP", "NA", "EU", "OC", "Others"];
 
         // datacenters
-        sb.Append("type Datacenter string\n");
-        sb.Append("const (\n");
+        sb.Append("type Datacenter struct {\n");
+        sb.Append("\tName string\n");
+        sb.Append("\tId int\n");
+        sb.Append("}\n\n");
+
+        sb.Append("var (\n");
 
         foreach (var region in regions)
         {
@@ -376,7 +380,7 @@ internal class Program
             { 
                 continue; 
             }
-            sb.Append($"\t{name} Datacenter = \"{name}\"\n");
+            sb.Append($"\t{name} Datacenter = Datacenter{{Name:\"{name}\", Id : {dc.NeolobbyId}}}\n");
 
             // add datacenter regions
             switch ((int)dc.Region) {
@@ -392,7 +396,7 @@ internal class Program
                     datacenters[regions[4]].Add(name); break;
             }
         }
-        sb.Append(")\n");
+        sb.Append(")\n\n");
 
         // add datacenter regions
         foreach (var region in regions)
