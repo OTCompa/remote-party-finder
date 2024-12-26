@@ -6126,6 +6126,12 @@ var TERRITORY_NAMES = map[uint32]LocalisedText{
           De: "Jadelichtung",
           Fr: "Clairière de Jade",
         },
+	1241: {
+          En: "Sphere of Naught",
+          Ja: "暗闇の領域",
+          De: "Sphäre der Leere",
+          Fr: "Sphère de l'absence",
+        },
 	1242: {
           En: "Yuweyawata",
           Ja: "ユウェヤーワータ",

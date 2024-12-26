@@ -7637,6 +7637,16 @@ var DUTIES = map[uint32]DutyInfo{
 		HighEnd: false,
 		ContentKind: ContentKindQuestBattles,
 	},
+	1010: {
+		Name: LocalisedText{
+              En: "The Cloud of Darkness (Chaotic)",
+              Ja: "滅暗闇の雲激闘戦",
+              De: "Die Wolke der Dunkelheit (chaotisch)",
+              Fr: "La Tour de Ténèbres (chaotique)",
+            },
+		HighEnd: true,
+		ContentKind: ContentKindChaoticAllianceRaid,
+	},
 	1012: {
 		Name: LocalisedText{
               En: "React to Attack Markers",
@@ -7679,7 +7689,7 @@ var DUTIES = map[uint32]DutyInfo{
 	},
 	1017: {
 		Name: LocalisedText{
-              En: "The Minstrel’s Ballad: Sphene's Burden",
+              En: "The Minstrel's Ballad: Sphene's Burden",
               Ja: "極エターナルクイーン討滅戦",
               De: "Gok Tajaal - Ewige Königin",
               Fr: "Interphos (extrême)",

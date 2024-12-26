@@ -7685,6 +7685,18 @@ var AUTO_TRANSLATE = map[MapStruct]LocalisedText{
             De: "Punutiy",
             Fr: "punutiy",
 		},
+	{49, 360}: {
+            En: "shroud of Darkness",
+            Ja: "暗闇の羽衣",
+            De: "Wolkenkleid der Dunkelheit",
+            Fr: "exhalaison de Ténèbres",
+		},
+	{49, 361}: {
+            En: "dais of Darkness",
+            Ja: "暗黒領域",
+            De: "Dunkle Falle",
+            Fr: "domaine ténébreux",
+		},
 	{49, 363}: {
             En: "wings of eternity",
             Ja: "ウィング・オブ・エターナル",
@@ -26519,6 +26531,12 @@ var AUTO_TRANSLATE = map[MapStruct]LocalisedText{
             De: "Spielzeugsoldat[p] S3",
             Fr: "soldat d'étain S3",
 		},
+	{65, 537}: {
+            En: "wisp of Darkness",
+            Ja: "淡闇の雲",
+            De: "Dunstwölkchen[p] der Dunkelheit",
+            Fr: "vapeur de Ténèbres",
+		},
 	{65, 538}: {
             En: "wind-up Themis",
             Ja: "マメット・テミス",
@@ -30886,5 +30904,17 @@ var AUTO_TRANSLATE = map[MapStruct]LocalisedText{
           Ja: "ユウェヤーワータ",
           De: "Yuweyawata",
           Fr: "Yuweyawata",
+        },
+	{24, 5160}: {
+          En: "Cloud of Darkness (Chaotic)",
+          Ja: "滅暗闇の雲激闘戦",
+          De: "Die Wolke der Dunkelheit (chaotisch)",
+          Fr: "La Tour de Ténèbres (chaotique)",
+        },
+	{24, 5161}: {
+          En: "chaotic alliance raid",
+          Ja: "滅アライアンスレイド",
+          De: "Chaotischer Allianz-Raid",
+          Fr: "raid en alliance chaotique",
         },
 }
