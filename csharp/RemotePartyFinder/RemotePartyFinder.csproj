@@ -2,7 +2,7 @@
 
     <PropertyGroup>
         <Version>1.0.14</Version>
-        <TargetFramework>net8.0-windows</TargetFramework>
+        <TargetFramework>net9.0-windows</TargetFramework>
         <ProduceReferenceAssembly>false</ProduceReferenceAssembly>
         <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
         <RestorePackagesWithLockFile>true</RestorePackagesWithLockFile>
@@ -22,6 +22,10 @@
     </PropertyGroup>
 
     <ItemGroup>
+      <PackageReference Include="DalamudPackager" Version="12.0.0" />
+    </ItemGroup>
+
+    <ItemGroup>
         <Reference Include="Dalamud">
             <HintPath>$(DalamudLibPath)\Dalamud.dll</HintPath>
             <Private>false</Private>
@@ -38,10 +42,6 @@
             <HintPath>$(DalamudLibPath)\Newtonsoft.Json.dll</HintPath>
             <Private>false</Private>
         </Reference>
-    </ItemGroup>
-
-    <ItemGroup>
-        <PackageReference Include="DalamudPackager" Version="11.0.0" />
     </ItemGroup>
 
 </Project>

@@ -1,4 +1,5 @@
 package ffxiv
+
 type ContentKind uint32
 
 const (
@@ -14,7 +15,7 @@ const (
 	ContentKindLevequests
 	ContentKindGrandCompany
 	ContentKindCompanions
-	ContentKindTribalQuests
+	ContentKindSocietyQuests
 	ContentKindOverallCompletion
 	ContentKindPlayerCommendation
 	ContentKindDisciplesoftheLand
@@ -79,8 +80,8 @@ func (k ContentKind) String() string {
 		return "GrandCompany"
 	case ContentKindCompanions:
 		return "Companions"
-	case ContentKindTribalQuests:
-		return "TribalQuests"
+	case ContentKindSocietyQuests:
+		return "SocietyQuests"
 	case ContentKindOverallCompletion:
 		return "OverallCompletion"
 	case ContentKindPlayerCommendation:

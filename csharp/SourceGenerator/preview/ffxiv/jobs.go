@@ -1,4 +1,5 @@
 package ffxiv
+
 type ClassJob interface {
 	isClassJob()
 }
@@ -16,66 +17,66 @@ type NonCombatJob string
 func (NonCombatJob) isClassJob() {}
 
 const (
-	Gladiator	Class = "Gladiator"
-	Pugilist	Class = "Pugilist"
-	Marauder	Class = "Marauder"
-	Lancer	Class = "Lancer"
-	Archer	Class = "Archer"
-	Conjurer	Class = "Conjurer"
-	Thaumaturge	Class = "Thaumaturge"
-	Arcanist	Class = "Arcanist"
-	Rogue	Class = "Rogue"
+	Gladiator   Class = "Gladiator"
+	Pugilist    Class = "Pugilist"
+	Marauder    Class = "Marauder"
+	Lancer      Class = "Lancer"
+	Archer      Class = "Archer"
+	Conjurer    Class = "Conjurer"
+	Thaumaturge Class = "Thaumaturge"
+	Arcanist    Class = "Arcanist"
+	Rogue       Class = "Rogue"
 )
 
 const (
-	Paladin	Job = "Paladin"
-	Monk	Job = "Monk"
-	Warrior	Job = "Warrior"
-	Dragoon	Job = "Dragoon"
-	Bard	Job = "Bard"
-	WhiteMage	Job = "WhiteMage"
-	BlackMage	Job = "BlackMage"
-	Summoner	Job = "Summoner"
-	Scholar	Job = "Scholar"
-	Ninja	Job = "Ninja"
-	Machinist	Job = "Machinist"
-	DarkKnight	Job = "DarkKnight"
-	Astrologian	Job = "Astrologian"
-	Samurai	Job = "Samurai"
-	RedMage	Job = "RedMage"
-	BlueMage	Job = "BlueMage"
-	Gunbreaker	Job = "Gunbreaker"
-	Dancer	Job = "Dancer"
-	Reaper	Job = "Reaper"
-	Sage	Job = "Sage"
-	Viper	Job = "Viper"
-	Pictomancer	Job = "Pictomancer"
+	Paladin     Job = "Paladin"
+	Monk        Job = "Monk"
+	Warrior     Job = "Warrior"
+	Dragoon     Job = "Dragoon"
+	Bard        Job = "Bard"
+	WhiteMage   Job = "WhiteMage"
+	BlackMage   Job = "BlackMage"
+	Summoner    Job = "Summoner"
+	Scholar     Job = "Scholar"
+	Ninja       Job = "Ninja"
+	Machinist   Job = "Machinist"
+	DarkKnight  Job = "DarkKnight"
+	Astrologian Job = "Astrologian"
+	Samurai     Job = "Samurai"
+	RedMage     Job = "RedMage"
+	BlueMage    Job = "BlueMage"
+	Gunbreaker  Job = "Gunbreaker"
+	Dancer      Job = "Dancer"
+	Reaper      Job = "Reaper"
+	Sage        Job = "Sage"
+	Viper       Job = "Viper"
+	Pictomancer Job = "Pictomancer"
 )
 
 const (
-	Carpenter	NonCombatJob = "Carpenter"
-	Blacksmith	NonCombatJob = "Blacksmith"
-	Armorer	NonCombatJob = "Armorer"
-	Goldsmith	NonCombatJob = "Goldsmith"
-	Leatherworker	NonCombatJob = "Leatherworker"
-	Weaver	NonCombatJob = "Weaver"
-	Alchemist	NonCombatJob = "Alchemist"
-	Culinarian	NonCombatJob = "Culinarian"
-	Miner	NonCombatJob = "Miner"
-	Botanist	NonCombatJob = "Botanist"
-	Fisher	NonCombatJob = "Fisher"
+	Carpenter     NonCombatJob = "Carpenter"
+	Blacksmith    NonCombatJob = "Blacksmith"
+	Armorer       NonCombatJob = "Armorer"
+	Goldsmith     NonCombatJob = "Goldsmith"
+	Leatherworker NonCombatJob = "Leatherworker"
+	Weaver        NonCombatJob = "Weaver"
+	Alchemist     NonCombatJob = "Alchemist"
+	Culinarian    NonCombatJob = "Culinarian"
+	Miner         NonCombatJob = "Miner"
+	Botanist      NonCombatJob = "Botanist"
+	Fisher        NonCombatJob = "Fisher"
 )
 
 var JOBS = map[uint32]ClassJob{
-	1: Gladiator,
-	2: Pugilist,
-	3: Marauder,
-	4: Lancer,
-	5: Archer,
-	6: Conjurer,
-	7: Thaumaturge,
-	8: Carpenter,
-	9: Blacksmith,
+	1:  Gladiator,
+	2:  Pugilist,
+	3:  Marauder,
+	4:  Lancer,
+	5:  Archer,
+	6:  Conjurer,
+	7:  Thaumaturge,
+	8:  Carpenter,
+	9:  Blacksmith,
 	10: Armorer,
 	11: Goldsmith,
 	12: Leatherworker,
