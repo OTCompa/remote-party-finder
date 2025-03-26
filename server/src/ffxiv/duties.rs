@@ -24,7 +24,7 @@ pub enum ContentKind {
     Levequests = 10,
     GrandCompany = 11,
     Companions = 12,
-    TribalQuests = 13,
+    SocietyQuests = 13,
     OverallCompletion = 14,
     PlayerCommendation = 15,
     DisciplesoftheLand = 16,
@@ -64,7 +64,7 @@ impl ContentKind {
             10 => Self::Levequests,
             11 => Self::GrandCompany,
             12 => Self::Companions,
-            13 => Self::TribalQuests,
+            13 => Self::SocietyQuests,
             14 => Self::OverallCompletion,
             15 => Self::PlayerCommendation,
             16 => Self::DisciplesoftheLand,
@@ -104,7 +104,7 @@ impl ContentKind {
             Self::Levequests => 10,
             Self::GrandCompany => 11,
             Self::Companions => 12,
-            Self::TribalQuests => 13,
+            Self::SocietyQuests => 13,
             Self::OverallCompletion => 14,
             Self::PlayerCommendation => 15,
             Self::DisciplesoftheLand => 16,
@@ -7550,7 +7550,7 @@ lazy_static::lazy_static! {
                 de: "Arkadion - Halbschwergewicht R1 (episch)",
                 fr: "Poids mi-lourds CCA - match 1 (sadique)",
             },
-            high_end: true,
+            high_end: false,
             content_kind: ContentKind::Raids,
         },
         987 => DutyInfo {
@@ -7570,7 +7570,7 @@ lazy_static::lazy_static! {
                 de: "Arkadion - Halbschwergewicht R2 (episch)",
                 fr: "Poids mi-lourds CCA - match 2 (sadique)",
             },
-            high_end: true,
+            high_end: false,
             content_kind: ContentKind::Raids,
         },
         989 => DutyInfo {
@@ -7590,7 +7590,7 @@ lazy_static::lazy_static! {
                 de: "Arkadion - Halbschwergewicht R3 (episch)",
                 fr: "Poids mi-lourds CCA - match 3 (sadique)",
             },
-            high_end: true,
+            high_end: false,
             content_kind: ContentKind::Raids,
         },
         991 => DutyInfo {
@@ -7610,7 +7610,7 @@ lazy_static::lazy_static! {
                 de: "Arkadion - Halbschwergewicht R4 (episch)",
                 fr: "Poids mi-lourds CCA - match 4 (sadique)",
             },
-            high_end: true,
+            high_end: false,
             content_kind: ContentKind::Raids,
         },
         993 => DutyInfo {
@@ -7733,16 +7733,6 @@ lazy_static::lazy_static! {
             high_end: true,
             content_kind: ContentKind::UltimateRaids,
         },
-        1007 => DutyInfo {
-            name: LocalisedText {
-                en: "The Jade Stoa (Unreal)",
-                ja: "幻白虎征魂戦",
-                de: "Traumprüfung - Byakko",
-                fr: "La Clairière de Jade (irréel)",
-            },
-            high_end: true,
-            content_kind: ContentKind::Trials,
-        },
         1008 => DutyInfo {
             name: LocalisedText {
                 en: "Yuweyawata Field Station",
@@ -7813,12 +7803,142 @@ lazy_static::lazy_static! {
             high_end: false,
             content_kind: ContentKind::Raids,
         },
+        1016 => DutyInfo {
+            name: LocalisedText {
+                en: "Bar the Passage",
+                ja: "決戦、ゾーゴー永結橋",
+                de: "Kampf an Zorgor der Weiten",
+                fr: "Pour s'affranchir de la tyrannie, tout s'appelle vertu",
+            },
+            high_end: false,
+            content_kind: ContentKind::QuestBattles,
+        },
         1017 => DutyInfo {
             name: LocalisedText {
                 en: "The Minstrel's Ballad: Sphene's Burden",
                 ja: "極エターナルクイーン討滅戦",
                 de: "Gok Tajaal - Ewige Königin",
                 fr: "Interphos (extrême)",
+            },
+            high_end: false,
+            content_kind: ContentKind::Trials,
+        },
+        1019 => DutyInfo {
+            name: LocalisedText {
+                en: "AAC Cruiserweight M1",
+                ja: "至天の座アルカディア：クルーザー級1",
+                de: "Arkadion - Schwergewicht R1",
+                fr: "Poids lourds-légers CCA - match 1",
+            },
+            high_end: false,
+            content_kind: ContentKind::Raids,
+        },
+        1020 => DutyInfo {
+            name: LocalisedText {
+                en: "AAC Cruiserweight M1 (Savage)",
+                ja: "至天の座アルカディア零式：クルーザー級1",
+                de: "Arkadion - Schwergewicht R1 (episch)",
+                fr: "Poids lourds-légers CCA - match 1 (sadique)",
+            },
+            high_end: true,
+            content_kind: ContentKind::Raids,
+        },
+        1021 => DutyInfo {
+            name: LocalisedText {
+                en: "AAC Cruiserweight M2",
+                ja: "至天の座アルカディア：クルーザー級2",
+                de: "Arkadion - Schwergewicht R2",
+                fr: "Poids lourds-légers CCA - match 2",
+            },
+            high_end: false,
+            content_kind: ContentKind::Raids,
+        },
+        1022 => DutyInfo {
+            name: LocalisedText {
+                en: "AAC Cruiserweight M2 (Savage)",
+                ja: "至天の座アルカディア零式：クルーザー級2",
+                de: "Arkadion - Schwergewicht R2 (episch)",
+                fr: "Poids lourds-légers CCA - match 2 (sadique)",
+            },
+            high_end: true,
+            content_kind: ContentKind::Raids,
+        },
+        1023 => DutyInfo {
+            name: LocalisedText {
+                en: "AAC Cruiserweight M3",
+                ja: "至天の座アルカディア：クルーザー級3",
+                de: "Arkadion - Schwergewicht R3",
+                fr: "Poids lourds-légers CCA - match 3",
+            },
+            high_end: false,
+            content_kind: ContentKind::Raids,
+        },
+        1024 => DutyInfo {
+            name: LocalisedText {
+                en: "AAC Cruiserweight M3 (Savage)",
+                ja: "至天の座アルカディア零式：クルーザー級3",
+                de: "Arkadion - Schwergewicht R3 (episch)",
+                fr: "Poids lourds-légers CCA - match 3 (sadique)",
+            },
+            high_end: true,
+            content_kind: ContentKind::Raids,
+        },
+        1025 => DutyInfo {
+            name: LocalisedText {
+                en: "AAC Cruiserweight M4",
+                ja: "至天の座アルカディア：クルーザー級4",
+                de: "Arkadion - Schwergewicht R4",
+                fr: "Poids lourds-légers CCA - match 4",
+            },
+            high_end: false,
+            content_kind: ContentKind::Raids,
+        },
+        1026 => DutyInfo {
+            name: LocalisedText {
+                en: "AAC Cruiserweight M4 (Savage)",
+                ja: "至天の座アルカディア零式：クルーザー級4",
+                de: "Arkadion - Schwergewicht R4 (episch)",
+                fr: "Poids lourds-légers CCA - match 4 (sadique)",
+            },
+            high_end: true,
+            content_kind: ContentKind::Raids,
+        },
+        1027 => DutyInfo {
+            name: LocalisedText {
+                en: "The Underkeep",
+                ja: "王城旧跡 アンダーキープ",
+                de: "Unterfried-Ruinen",
+                fr: "La Gardienne de l'Immémorial",
+            },
+            high_end: false,
+            content_kind: ContentKind::Dungeons,
+        },
+        1029 => DutyInfo {
+            name: LocalisedText {
+                en: "Hells' Kier (Unreal)",
+                ja: "幻朱雀征魂戦",
+                de: "Traumprüfung - Suzaku",
+                fr: "Le Nid des Lamentations (irréel)",
+            },
+            high_end: true,
+            content_kind: ContentKind::Trials,
+        },
+        1030 => DutyInfo {
+            name: LocalisedText {
+                en: "Recollection",
+                ja: "ゼレニア討滅戦",
+                de: "Zel Tajaal - Zelenia",
+                fr: "Le Sanctuaire du Serment",
+            },
+            high_end: false,
+            content_kind: ContentKind::Trials,
+        },
+        1031 => DutyInfo {
+            name: LocalisedText {
+                en: "Recollection (Extreme)",
+                ja: "極ゼレニア討滅戦",
+                de: "Gok Tajaal - Zelenia",
+                fr: "Le Sanctuaire du Serment (extrême)",
             },
             high_end: true,
             content_kind: ContentKind::Trials,

@@ -3855,6 +3855,48 @@ lazy_static::lazy_static! {
             de: "Team Umbra",
             fr: "équipe Umbra",
         },
+        (18, 1528) => LocalisedText {
+            en: "duty action",
+            ja: "コンテンツアクション",
+            de: "Spezialkommando",
+            fr: "Action de mission",
+        },
+        (18, 1529) => LocalisedText {
+            en: "weaponry displacement system",
+            ja: "兵器転移装置",
+            de: "Waffentransportvorrichtung",
+            fr: "système d'arsenal mobile",
+        },
+        (18, 1530) => LocalisedText {
+            en: "personnel displacement panels",
+            ja: "転移装置",
+            de: "Einheitentransporter",
+            fr: "téléporteur",
+        },
+        (18, 1531) => LocalisedText {
+            en: "interceptor drone",
+            ja: "邀撃ドローン",
+            de: "Interzeptor-Drohne",
+            fr: "drone de neutralisation",
+        },
+        (18, 1532) => LocalisedText {
+            en: "interceptor drone α",
+            ja: "邀撃ドローンα",
+            de: "Interzeptor-Drohne α",
+            fr: "drone de neutralisation α",
+        },
+        (18, 1533) => LocalisedText {
+            en: "interceptor command system",
+            ja: "邀撃コマンダー",
+            de: "Interzeptor-Kommandant",
+            fr: "commandant de neutralisation",
+        },
+        (18, 1534) => LocalisedText {
+            en: "interceptor node",
+            ja: "邀撃システム",
+            de: "Interzeptor-Modul",
+            fr: "sphère de neutralisation",
+        },
         (20, 1550) => LocalisedText {
             en: "【Communication】",
             ja: "【コミュニケーション】",
@@ -4357,7 +4399,7 @@ lazy_static::lazy_static! {
             en: "gatherer role action",
             ja: "ギャザラーロールアクション",
             de: "Sammler-Rollenkommando",
-            fr: "action de récolte",
+            fr: "Action de récolte",
         },
         (22, 1663) => LocalisedText {
             en: "orange crafters' scrip",
@@ -4790,6 +4832,12 @@ lazy_static::lazy_static! {
             ja: "エターナルクイーン",
             de: "Ewige Königin",
             fr: "Reine Éternité",
+        },
+        (23, 1970) => LocalisedText {
+            en: "Zelenia",
+            ja: "ゼレニア",
+            de: "Zelenia",
+            fr: "Zelenia",
         },
         (24, 2000) => LocalisedText {
             en: "【Duty】",
@@ -7615,13 +7663,13 @@ lazy_static::lazy_static! {
             en: "wings of ruin",
             ja: "ウィング・オブ・ディザスター",
             de: "Flügel der Katastrophe",
-            fr: "aile du désastre",
+            fr: "paire d'ailes du désastre",
         },
         (49, 346) => LocalisedText {
             en: "wings of resolve",
             ja: "ウィング・オブ・リゾルヴ",
             de: "Flügel des Mutes",
-            fr: "aile de la détermination",
+            fr: "paire d'ailes de la détermination",
         },
         (49, 347) => LocalisedText {
             en: "outrunner",
@@ -7677,6 +7725,12 @@ lazy_static::lazy_static! {
             de: "Kantor",
             fr: "maousse-pampa",
         },
+        (49, 357) => LocalisedText {
+            en: "eggeater",
+            ja: "エッグイーター",
+            de: "Eierbär",
+            fr: "dévor'œufs",
+        },
         (49, 358) => LocalisedText {
             en: "punutiy",
             ja: "プヌティー",
@@ -7699,13 +7753,37 @@ lazy_static::lazy_static! {
             en: "wings of eternity",
             ja: "ウィング・オブ・エターナル",
             de: "Flügel der Endlosigkeit",
-            fr: "aile de l'Éternelle",
+            fr: "paire d'ailes de l'Éternelle",
         },
         (49, 365) => LocalisedText {
             en: "venturous kamuy",
             ja: "商のカムイ",
             de: "Geschäftiger Kamuy",
             fr: "kamuy de la prospérité",
+        },
+        (49, 374) => LocalisedText {
+            en: "snowstreamer",
+            ja: "スノウストリーマー",
+            de: "Schneefluenzer",
+            fr: "streamer de neige",
+        },
+        (49, 382) => LocalisedText {
+            en: "air-wheeler C9",
+            ja: "エアスピナーC9",
+            de: "Luftraser C9",
+            fr: "motodrone C9",
+        },
+        (49, 389) => LocalisedText {
+            en: "wings of the knighthood",
+            ja: "ウィング・オブ・ナイトフッド",
+            de: "Flügel der Ritterlichkeit",
+            fr: "paire d'ailes du serment",
+        },
+        (49, 390) => LocalisedText {
+            en: "magitek slasher",
+            ja: "魔導スラッシャー",
+            de: "Magitek-Schlitzer",
+            fr: "tailladeur magitek",
         },
         (50, 1) => LocalisedText {
             en: "gladiator",
@@ -10761,6 +10839,42 @@ lazy_static::lazy_static! {
             de: "Jeuno: Die erste Etappe",
             fr: "Jeuno - La première perambulation",
         },
+        (51, 5153) => LocalisedText {
+            en: "Recollection",
+            ja: "玉座の間",
+            de: "Audienzhalle",
+            fr: "Salle du trône séculaire",
+        },
+        (51, 5155) => LocalisedText {
+            en: "Demolition Site",
+            ja: "第八層建設区域",
+            de: "Neubaugebiet der achten Ebene",
+            fr: "Site de construction du huitième étage",
+        },
+        (51, 5156) => LocalisedText {
+            en: "The Underkeep",
+            ja: "アンダーキープ",
+            de: "Unterfried",
+            fr: "Gardienne de l'Immémorial",
+        },
+        (51, 5175) => LocalisedText {
+            en: "Rebel Ring",
+            ja: "リング・オブ・アート",
+            de: "Kunstring",
+            fr: "Ring de l'Inspiration artistique",
+        },
+        (51, 5176) => LocalisedText {
+            en: "Groovy Ring",
+            ja: "リング・オブ・ダンス",
+            de: "Tanzring",
+            fr: "Ring des Chorégraphies endiablées",
+        },
+        (51, 5177) => LocalisedText {
+            en: "Hunter's Ring",
+            ja: "リング・オブ・ウルフ",
+            de: "Wolfsring",
+            fr: "Ring du Champion lupin",
+        },
         (54, 1) => LocalisedText {
             en: "Halone, the Fury",
             ja: "ハルオーネ",
@@ -10982,6 +11096,48 @@ lazy_static::lazy_static! {
             ja: "コンテンツアクション2",
             de: "Spezialkommando 2",
             fr: "Action de mission 2",
+        },
+        (55, 36) => LocalisedText {
+            en: "Attack Target",
+            ja: "ターゲット・攻撃",
+            de: "Markierung „Angreifen“ anvisieren",
+            fr: "Cible : attaquer",
+        },
+        (55, 37) => LocalisedText {
+            en: "Bind Target",
+            ja: "ターゲット・足止め",
+            de: "Markierung „Binden“ anvisieren",
+            fr: "Cible : entraver",
+        },
+        (55, 38) => LocalisedText {
+            en: "Ignore Target",
+            ja: "ターゲット・禁止",
+            de: "Markierung „Ignorieren“ anvisieren",
+            fr: "Cible : ignorer",
+        },
+        (55, 39) => LocalisedText {
+            en: "Square Target",
+            ja: "ターゲット・汎用シカク",
+            de: "Quadrat anvisieren",
+            fr: "Cible : carré",
+        },
+        (55, 40) => LocalisedText {
+            en: "Circle Target",
+            ja: "ターゲット・汎用マル",
+            de: "Kreis anvisieren",
+            fr: "Cible : cercle",
+        },
+        (55, 41) => LocalisedText {
+            en: "Plus Target",
+            ja: "ターゲット・汎用プラス",
+            de: "Plus anvisieren",
+            fr: "Cible : croix",
+        },
+        (55, 42) => LocalisedText {
+            en: "Triangle Target",
+            ja: "ターゲット・汎用サンカク",
+            de: "Dreieck anvisieren",
+            fr: "Cible : triangle",
         },
         (56, 9) => LocalisedText {
             en: "Fast Blade",
@@ -16939,7 +17095,7 @@ lazy_static::lazy_static! {
             en: "Aetherial Shift",
             ja: "エーテリアルシフト",
             de: "Ätherische Verschiebung",
-            fr: "Déplacément éthéréen",
+            fr: "Déplacement éthéréen",
         },
         (56, 37009) => LocalisedText {
             en: "Glare IV",
@@ -19938,7 +20094,7 @@ lazy_static::lazy_static! {
         (62, 437) => LocalisedText {
             en: "/stagger",
             ja: "/stagger",
-            de: "/taumel",
+            de: "/torkel",
             fr: "/tituber",
         },
         (62, 438) => LocalisedText {
@@ -21195,11 +21351,47 @@ lazy_static::lazy_static! {
             de: "/mixen",
             fr: "/mélangercocktail",
         },
+        (62, 683) => LocalisedText {
+            en: "/poseoftheunbound",
+            ja: "/poseoftheunbound",
+            de: "/freigeist",
+            fr: "/poseaffranchis",
+        },
+        (62, 684) => LocalisedText {
+            en: "/bouquet",
+            ja: "/bouquet",
+            de: "/blumen",
+            fr: "/offrirfleurs",
+        },
         (62, 686) => LocalisedText {
             en: "/ohokaliy",
             ja: "/ohokaliy",
             de: "/ohokaliy",
             fr: "/ohokaliy",
+        },
+        (62, 689) => LocalisedText {
+            en: "/photograph",
+            ja: "/photograph",
+            de: "/foto",
+            fr: "/photographier",
+        },
+        (62, 694) => LocalisedText {
+            en: "/dazed",
+            ja: "/dazed",
+            de: "/taumeln",
+            fr: "/chanceler",
+        },
+        (62, 696) => LocalisedText {
+            en: "/tomescroll",
+            ja: "/tomescroll",
+            de: "/steinstarren",
+            fr: "/mémoquartzcontinu",
+        },
+        (62, 697) => LocalisedText {
+            en: "/study",
+            ja: "/study",
+            de: "/schmökern",
+            fr: "/lireunlivrecontinu",
         },
         (63, 29054) => LocalisedText {
             en: "Guard",
@@ -21210,7 +21402,7 @@ lazy_static::lazy_static! {
         (63, 29055) => LocalisedText {
             en: "Standard-issue Elixir",
             ja: "軍用エリクサー",
-            de: "Frontenelixier ",
+            de: "Frontenelixier",
             fr: "Élixir militaire",
         },
         (63, 29056) => LocalisedText {
@@ -21278,12 +21470,6 @@ lazy_static::lazy_static! {
             ja: "ファランクス",
             de: "Phalanx",
             fr: "Phalanx",
-        },
-        (63, 29070) => LocalisedText {
-            en: "Confiteor",
-            ja: "コンフィテオル",
-            de: "Confiteor",
-            fr: "Confiteor",
         },
         (63, 29071) => LocalisedText {
             en: "Blade of Faith",
@@ -23254,6 +23440,108 @@ lazy_static::lazy_static! {
             de: "Psyche",
             fr: "Psyché",
         },
+        (63, 42194) => LocalisedText {
+            en: "Confiteor",
+            ja: "コンフィテオル",
+            de: "Confiteor",
+            fr: "Confiteor",
+        },
+        (63, 43243) => LocalisedText {
+            en: "Rampage",
+            ja: "ランページ",
+            de: "Amok",
+            fr: "Ravage",
+        },
+        (63, 43244) => LocalisedText {
+            en: "Rampart",
+            ja: "ランパート",
+            de: "Schutzwall",
+            fr: "Rempart",
+        },
+        (63, 43245) => LocalisedText {
+            en: "Full Swing",
+            ja: "フルスイング",
+            de: "Voller Schwinger",
+            fr: "Plein élan",
+        },
+        (63, 43246) => LocalisedText {
+            en: "Bloodbath",
+            ja: "ブラッドバス",
+            de: "Blutbad",
+            fr: "Bain de sang",
+        },
+        (63, 43247) => LocalisedText {
+            en: "Swift",
+            ja: "スウィフト",
+            de: "Eile",
+            fr: "Vélocité",
+        },
+        (63, 43248) => LocalisedText {
+            en: "Smite",
+            ja: "スマイト",
+            de: "Zerschlagung",
+            fr: "Châtiment",
+        },
+        (63, 43249) => LocalisedText {
+            en: "Dervish",
+            ja: "スピードスター",
+            de: "Derwisch",
+            fr: "Célérité extrême",
+        },
+        (63, 43250) => LocalisedText {
+            en: "Bravery",
+            ja: "ブレイブ",
+            de: "Courage",
+            fr: "Courage",
+        },
+        (63, 43251) => LocalisedText {
+            en: "Eagle Eye Shot",
+            ja: "イーグルアイ",
+            de: "Adlerauge",
+            fr: "Œil d'aigle",
+        },
+        (63, 43252) => LocalisedText {
+            en: "Comet",
+            ja: "コメット",
+            de: "Komet",
+            fr: "Comète",
+        },
+        (63, 43254) => LocalisedText {
+            en: "Rust",
+            ja: "ダルウェポン",
+            de: "Stumpfe Klinge",
+            fr: "Émoussement",
+        },
+        (63, 43255) => LocalisedText {
+            en: "Haelan",
+            ja: "ヒール",
+            de: "Heilung",
+            fr: "Soin",
+        },
+        (63, 43256) => LocalisedText {
+            en: "Stoneskin II",
+            ja: "ストンラスキン",
+            de: "Steinrahaut",
+            fr: "Extra Cuirasse",
+        },
+        (63, 43257) => LocalisedText {
+            en: "Diabrosis",
+            ja: "ディアブロシス",
+            de: "Diablose",
+            fr: "Diabrosis",
+        },
+        (63, 43259) => LocalisedText {
+            en: "PvP Role Action",
+            ja: "PvPロールアクション",
+            de: "PvP-Rollenkommando",
+            fr: "Action de rôle JcJ",
+        },
+        (63, 43291) => LocalisedText {
+            en: "Phantom Dart",
+            ja: "ファントムダート",
+            de: "Phantompfeil",
+            fr: "Projectile fantôme",
+        },
         (64, 1) => LocalisedText {
             en: "Emerald Carbuncle",
             ja: "カーバンクル・エメラルド",
@@ -24998,7 +25286,7 @@ lazy_static::lazy_static! {
             en: "private moai",
             ja: "ミニモアイ",
             de: "Moai-Statuette",
-            fr: "mini moai",
+            fr: "mini-moai",
         },
         (65, 279) => LocalisedText {
             en: "white whittret",
@@ -26278,6 +26566,12 @@ lazy_static::lazy_static! {
             de: "Uolosapa",
             fr: "uolosapa",
         },
+        (65, 492) => LocalisedText {
+            en: "the Great White Tsuchinoko",
+            ja: "東方の白ツチノコ？",
+            de: "Weiß[a] Noko",
+            fr: "vénérable tsuchinoko blanc?",
+        },
         (65, 493) => LocalisedText {
             en: "Tourmaline Weapon",
             ja: "トルマリンウェポン",
@@ -26366,7 +26660,7 @@ lazy_static::lazy_static! {
             en: "petit punutiy",
             ja: "プチプヌティー",
             de: "Mini-Punutiy",
-            fr: "mini punutiy",
+            fr: "mini-punutiy",
         },
         (65, 508) => LocalisedText {
             en: "air-wheeler M9",
@@ -26530,6 +26824,12 @@ lazy_static::lazy_static! {
             de: "Spielzeugsoldat[p] S3",
             fr: "soldat d'étain S3",
         },
+        (65, 536) => LocalisedText {
+            en: "the Deathservant",
+            ja: "イケニエ様",
+            de: "Meister Messer",
+            fr: "sire Sacrifice",
+        },
         (65, 537) => LocalisedText {
             en: "wisp of Darkness",
             ja: "淡闇の雲",
@@ -26547,6 +26847,18 @@ lazy_static::lazy_static! {
             ja: "ローンブレイザー号",
             de: "Dämmertuff",
             fr: "Exaltaurore",
+        },
+        (65, 544) => LocalisedText {
+            en: "clockwork oppressor",
+            ja: "クロックワーク・オプレッサー",
+            de: "Uhrwerk-Unterdrücker",
+            fr: "oppresseur mécanique",
+        },
+        (65, 549) => LocalisedText {
+            en: "royal hound",
+            ja: "ロイヤルハウンド",
+            de: "royal[a] Hund",
+            fr: "limier royal",
         },
         (67, 50) => LocalisedText {
             en: "Royal Authority Combo",
@@ -29798,7 +30110,7 @@ lazy_static::lazy_static! {
             en: "logos action",
             ja: "ロゴスアクション",
             de: "Logos-Kommando",
-            fr: "action Logos",
+            fr: "Action Logos",
         },
         (17, 4009) => LocalisedText {
             en: "Eureka weapon",
@@ -29956,12 +30268,6 @@ lazy_static::lazy_static! {
             de: "Inselparadies",
             fr: "Félicité insulaire",
         },
-        (17, 4042) => LocalisedText {
-            en: "Allagan tomestone of causality",
-            ja: "アラガントームストーン:因果",
-            de: "Allagische Steine der Kausalität",
-            fr: "mémoquartz allagois déterministes",
-        },
         (17, 4043) => LocalisedText {
             en: "Manderville weapon",
             ja: "マンダヴィルウェポン",
@@ -29974,12 +30280,6 @@ lazy_static::lazy_static! {
             de: "Mowen-Werkzeug",
             fr: "outil des merveilles",
         },
-        (17, 4045) => LocalisedText {
-            en: "Allagan tomestone of comedy",
-            ja: "アラガントームストーン:神曲",
-            de: "Allagische Steine der Komödie",
-            fr: "mémoquartz allagois dantesques",
-        },
         (17, 4046) => LocalisedText {
             en: "Allagan tomestone of aesthetics",
             ja: "アラガントームストーン:美学",
@@ -29991,6 +30291,12 @@ lazy_static::lazy_static! {
             ja: "アラガントームストーン:天道",
             de: "Allagische Steine der Heliometrie",
             fr: "mémoquartz allagois héliologiques",
+        },
+        (17, 4056) => LocalisedText {
+            en: "Allagan tomestone of mathematics",
+            ja: "アラガントームストーン:数理",
+            de: "Allagischer Stein der Mathematik",
+            fr: "mémoquartz allagois mathématiques",
         },
         (24, 5000) => LocalisedText {
             en: "normal raid",
@@ -30886,12 +31192,6 @@ lazy_static::lazy_static! {
             de: "Jeuno: Die erste Etappe",
             fr: "Jeuno - La première perambulation",
         },
-        (24, 5157) => LocalisedText {
-            en: "The Jade Stoa (Unreal)",
-            ja: "幻白虎征魂戦",
-            de: "Traumprüfung - Byakko",
-            fr: "Clairière de Jade (irréel)",
-        },
         (24, 5158) => LocalisedText {
             en: "The Minstrel's Ballad: Sphene's Burden",
             ja: "極エターナルクイーン討滅戦",
@@ -30901,7 +31201,7 @@ lazy_static::lazy_static! {
         (24, 5159) => LocalisedText {
             en: "Yuweyawata Field Station",
             ja: "ユウェヤーワータ",
-            de: "Yuweyawata",
+            de: "Forschungsstation Yuweyawata",
             fr: "Yuweyawata",
         },
         (24, 5160) => LocalisedText {
@@ -30915,6 +31215,36 @@ lazy_static::lazy_static! {
             ja: "滅アライアンスレイド",
             de: "Chaotischer Allianz-Raid",
             fr: "raid en alliance chaotique",
+        },
+        (24, 5162) => LocalisedText {
+            en: "Cruiserweight",
+            ja: "クルーザー級",
+            de: "Schwergewicht",
+            fr: "Poids lourds-legers",
+        },
+        (24, 5163) => LocalisedText {
+            en: "Hells' Kier (Unreal)",
+            ja: "幻朱雀征魂戦",
+            de: "Traumprüfung - Suzaku",
+            fr: "Nid des Lamentations (irréel)",
+        },
+        (24, 5164) => LocalisedText {
+            en: "Recollection",
+            ja: "ゼレニア討滅戦",
+            de: "Zel Tajaal - Zelenia",
+            fr: "Sanctuaire du Serment",
+        },
+        (24, 5165) => LocalisedText {
+            en: "Recollection (Extreme)",
+            ja: "極ゼレニア討滅戦",
+            de: "Gok Tajaal - Zelenia",
+            fr: "Sanctuaire du Serment (extrême)",
+        },
+        (24, 5166) => LocalisedText {
+            en: "The Underkeep",
+            ja: "アンダーキープ",
+            de: "Unterfried-Ruinen",
+            fr: "Gardienne de l'Immémorial",
         },
     };
 }
